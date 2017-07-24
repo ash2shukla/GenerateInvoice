@@ -34,7 +34,6 @@ def logout_x(request):
 
 def main(request):
     global source
-    print request.user.is_authenticated
     if request.user.is_authenticated:
         if request.method == "POST":
             c_dic={}
@@ -97,11 +96,9 @@ def main(request):
         return redirect('/login')
 
 def regenerate(request):
-    print request.user.is_authenticated
     if request.user.is_authenticated:
         if request.method == "POST":
             to_search = request.POST.get('INV')
-            print to_search
             try:
                 data = database.objects.filter(invoice_no=str(to_search))
                 try:
@@ -110,7 +107,6 @@ def regenerate(request):
                     return HttpResponse("Invoice not found!")
             except:
                 return HttpResponse("Unable to access database!")
-            print data
             c_dic={}
             c_dic['PD']=data.party_details
             c_dic['PT']=data.party_tin
