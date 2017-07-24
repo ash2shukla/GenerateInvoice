@@ -52,7 +52,7 @@ def main(request):
             gst = request.POST.get('GST')
             gst_val = round(float(gst)/2.0,2)
             sno = range(1,len(name)+1)
-            br_extra = range(17-len(sno))
+            br_extra = range(15-len(sno))
             val = zip(sno,name,qty,unit,price,amount)
             total = sum(amount)
             gtotal = total+total*(float(gst)/100)
