@@ -6,7 +6,6 @@ from ntw import Number2Words as ntw
 from .models import database
 from django.contrib.auth import authenticate,logout,login
 from django.template.loader import render_to_string
-from pdfkit import from_string
 from django.utils.encoding import smart_str
 from django.http import HttpResponse
 from os import remove
