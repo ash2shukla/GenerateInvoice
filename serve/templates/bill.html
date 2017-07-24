@@ -1,0 +1,113 @@
+<html>
+<head>
+  </head>
+  <body>
+      <table border="1" style="border-collapse:collapse;" cellpadding="4" >
+          <th colspan="6" width="90%">
+            <center>
+              <p align="left"><b><font size="2">TIN :06181404998</font></b></p>
+              <font size="2"><u><b>Bill Invoice</b></u></font><br>
+              <font size="5">Munjal Irrigation System</font><br>
+              Bhima Basti ,Near Water Tanki, Fatehabad -125050 (Haryana)<br>
+              Auth.Dealer:Jain Irrigation Systems Ltd, Jalgoan (MS)<br>
+              <i><b>Tel : 09812320841 email : munjal_sumesh@rediffmail.com
+              </i></b>
+            </center>
+          </th>
+          <tr>
+              <td colspan="2">
+                  <b><i>Party Details :<br>
+                  {{info.PD}}
+                  <br><br></b></i>
+                  Party Tin : {{info.PT}}
+              </td>
+              <td colspan="4">
+                  Invoice no &nbsp;&nbsp;&nbsp;&nbsp;: {{info.IN}}
+                  <br>
+                  Dated &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{ info.DATE}}
+                  <br>
+                  Transport &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{info.TP}}
+                  <br>
+                  Vehicle no &nbsp;&nbsp;&nbsp;&nbsp;:{{info.VN}}
+                  <br>
+                  Station &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{info.ST}}
+              </td>
+          </tr>
+        <tr>
+          <td colspan="6"><br>
+        </tr>
+        <tr>
+          <td >S.N.</td>
+          <td width="300px">Description of goods</td>
+          <td width="50px">Qty.</td>
+          <td width="50px">Unit</td>
+          <td width="100px">Price</td>
+          <td width="150px">Amount</td>
+        </tr>
+        {% for i,j,k,l,m,n in val %}
+        <tr>
+          <td style="vertical-align:top;border-bottom-color: white" >{{i}}</td>
+          <td style="vertical-align:top;border-bottom-color: white" >{{j}}</td>
+          <td style="vertical-align:top;border-bottom-color: white" >{{k}}</td>
+          <td style="vertical-align:top;border-bottom-color: white" >{{l}}</td>
+          <td style="vertical-align:top;border-bottom-color: white" >{{m}}</td>
+          <td style="vertical-align:top;border-bottom-color: white" >{{n}}</td>
+        </tr>
+            {% endfor %}
+
+            {% for x in brs %}
+              {% if x == last %}
+              <tr>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+              </tr>
+              {% else %}
+              <tr>
+                <td style="border-bottom-color: white">&nbsp;</td>
+                <td style="border-bottom-color: white">&nbsp;</td>
+                <td style="border-bottom-color: white">&nbsp;</td>
+                <td style="border-bottom-color: white">&nbsp;</td>
+                <td style="border-bottom-color: white">&nbsp;</td>
+                <td style="border-bottom-color: white">&nbsp;</td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+          <tr>
+          <td colspan="5"><p align="right">Total<br>
+          <i>Add : C.G.S.T {{gst}}%</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;{{gst}}%<br>
+          <i>Add : S.G.S.T {{gst}}%</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;{{gst}}%</p>
+          </td>
+          <td><p align="right">{{total}}<br>
+          {{csgst}}<br>
+          {{csgst}}</p>
+          </td>
+          </tr>
+          <tr>
+          <td colspan="5"><p align="right">Grand Total</p></td>
+          <td><p align="right"> {{gtotal}}</td></p>
+          </tr><tr>
+          <td colspan="6"><b>Sale @Exempt={{total}}<br>
+          {{inwords}}
+          </b></td>
+          </tr>
+          <tr>
+          <td colspan="2" rowspan="2"><p align="left"><b><u>Terms And Condition</u></b><br>
+          E.&O.E.<br>
+          1.Goods once sold will not be taken back<br>
+          2.Intrest @18% p.a. will be charged if the payment<br>is not made with in stipulated time.<br>
+          3.Subject to 'Fatehabad' Jurisdiction only.
+          </td>
+          <td colspan="4"><b>Receiver's Signature :<br>&nbsp;</td>
+          </tr>
+          <tr>
+          <td colspan="4"><p align="right"><b>for Munjal Irrigation System <br><br>
+          Authorised Signatory</b>
+          </td>
+          </tr>
+      </table>
+  </body>
+</html>

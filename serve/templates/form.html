@@ -1,0 +1,135 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+</head>
+<body>
+
+  <nav>
+      <div class="nav-wrapper">
+        <a href="/logout" class="brand-logo center">Logout</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/generate">Generate New Invoice</a></li>
+            <li><a href="/regenerate">Regenerate Old Invoice</a></li>
+          </ul>
+      </div>
+  </nav>
+
+<center><h4>Enter Customer Details</h4></center>
+<div class="row">
+    <form method="POST" class="col s12">
+      {% csrf_token %}
+    <div class="row">
+        <div class="input-field col s3" >
+          <label for="PD">Party Details</label>
+          <input type="text" size="60" name="PD" id="PD" placeholder="Party Details">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="PT">Party Tin</label>
+          <input type="text" size="60" name="PT" id="PT" placeholder="Party Tin">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="IN">Invoice no</label>
+          <input type="text" size="60" name="IN" id="IN" placeholder="Invoice No">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="DATE">Dated</label>
+          <input type="text" size="60" name="DATE" id="DATE" placeholder="Dated">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="TP">Transport</label>
+          <input type="text" size="60" name="TP" id="TP" placeholder="Transport">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="VN">Vehicle No</label>
+            <input type="text" size="60" name="VN" id="VN" placeholder="Vehicle No">
+        </div>
+
+        <div class="input-field col s3" >
+          <label for="ST">Station</label>
+            <input type="text" size="60" name="ST" id="ST" placeholder="Station">
+        </div>
+    </div>
+  <center><h4>Enter Item Details</h4></center>
+
+  <div  class="card-panel hoverable row" id = "wtf">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s3">
+                <label for="DG">Description of Goods</label>
+                <input type="text" size="60" name="DG" id="DG" placeholder="Description of goods">
+              </div>
+              <div class="input-field col s3">
+                <label for="QTY">Quantity</label>
+                <input type="number" size="60" name="QTY" id="QTY" placeholder="Qty">
+              </div>
+              <div class="input-field col s3">
+                <select  name="UNIT">
+                  <option value="" disabled selected>Choose Unit</option>
+                  <option value="Pcs">Pcs</option>
+                  <option value="Nos">Nos</option>
+                  <option value="Mtr">Mtr</option>
+                </select>
+              </div>
+              <div class="input-field col s3">
+                <label for="PRICE">Price</label>
+                  <input type="number" size="60" name="PRICE" id="PRICE" placeholder="Price">
+              </div>
+            </div>
+      </div>
+  </div>
+  <div id="insert">
+  </div>
+      <select name="GST">
+        <option value="" disabled selected>Choose G.S.T.</option>
+        <option value="5">5%</option>
+        <option value="18">18%</option>
+        <option value="28">28%</option>
+      </select>
+      <center>
+          <button class="btn waves-effect waves-light" type="submit">Generate Invoice</button>
+      </center>
+</div>
+</form>
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a onclick="append()" class="btn-floating red"><i class="material-icons">add</i></a></li>
+      <li><a onclick="remove()" class="btn-floating red darken-1"><i class="material-icons">remove</i></a></li>
+    </ul>
+  </div>
+<script>
+function append(){
+  var clone = document.getElementById('wtf').cloneNode(true);
+  // remove tbody tag
+  var InputType = clone.getElementsByTagName("input");
+
+        for (var i=0; i<InputType.length; i++){
+           InputType[i].value='';
+        }
+  document.getElementById('insert').appendChild(clone);
+  $('select').material_select();
+}
+function remove() {
+  var node = document.getElementById('insert').lastChild;
+  // remove tbody tag
+  console.log(node);
+  node.parentNode.removeChild(node);
+}
+$(document).ready(function() {
+    $('select').material_select();
+});
+</script>
+
+</body>
+</html>

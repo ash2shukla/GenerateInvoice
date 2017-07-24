@@ -1,0 +1,30 @@
+
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+</head>
+<nav>
+    <div class="nav-wrapper">
+      <a href="/logout" class="brand-logo center">Logout</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/generate">Generate New Invoice</a></li>
+        <li><a href="/regenerate">Regenerate Old Invoice</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="card-panel hoverable center-align">
+    <form class="col s12" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field center-align">
+          <input  placeholder="Give Invoice Number Regenrate Reciept" id="first_name" name="INV" type="text" class="validate">
+          <label for="first_name">Invoice Number</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Generate Invoice</button>
+      </div>
+    </form>
+  </div>
+</html>
