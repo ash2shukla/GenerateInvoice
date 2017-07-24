@@ -94,7 +94,7 @@ def main(request):
             return render(request,"form.html")
     else:
         return redirect('/login')
-
+        #Random comment
 def regenerate(request):
     if request.user.is_authenticated:
         if request.method == "POST":
