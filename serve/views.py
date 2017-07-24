@@ -78,10 +78,7 @@ def main(request):
                 ).save()
             except:
                 return HttpResponse("Data could not be saved to database")
-
-            return render(request,"bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
-            ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words})
-
+            return render(request,"bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words})
     '''        pdf = generate_pdf(html=source)
             response = HttpResponse(pdf.read(),content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('out.pdf')
