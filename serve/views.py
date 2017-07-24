@@ -10,6 +10,7 @@ from pdfkit import from_string
 from django.utils.encoding import smart_str
 from django.http import HttpResponse
 from os import remove
+from pywkher import generate_pdf
 
 
 source  = ""
@@ -80,12 +81,9 @@ def main(request):
                 return HttpResponse("Data could not be saved to database")
             source = render_to_string("bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
             ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words})
-            from_string(source,'out.pdf')
-            pdf = open('out.pdf')
+            pdf = generate_pdf(html=source)
             response = HttpResponse(pdf.read(),content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('out.pdf')
-            pdf.close()
-            remove('out.pdf')
             return response
 
             #return render(request,"bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
@@ -132,12 +130,9 @@ def regenerate(request):
             words =  ntw().convertNumberToWords(gtotal)[3:]+' Only'
             source = render_to_string("bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
             ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words})
-            from_string(source,'out.pdf')
-            pdf = open('out.pdf')
+            pdf =generate_pdf(html=source)
             response = HttpResponse(pdf.read(),content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('out.pdf')
-            pdf.close()
-            remove('out.pdf')
             return response
         else:
             return render(request,"formx.html")
