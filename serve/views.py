@@ -37,6 +37,8 @@ def main(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             c_dic={}
+            c_dic['firm'] = request.POST.get('firm')
+            c_dic['bill_type'] = request.POST.get('bill_type')
             c_dic['PD']=request.POST.get('PD')
             c_dic['PT']=request.POST.get('PT')
             c_dic['IN']=request.POST.get('IN')
@@ -63,6 +65,8 @@ def main(request):
             # Saving all to database
             try:
                 database(
+                    firm = c_dic['firm'],
+                    bill_type = c_dic['bill_type'],
                     invoice_no=c_dic['IN'],
                     dated = c_dic['DATE'],
                     party_details=c_dic['PD'],
@@ -105,6 +109,8 @@ def regenerate(request):
             except:
                 return HttpResponse("Unable to access database!")
             c_dic={}
+            c_dic['firm'] = data.firm
+            c_dic['bill_type'] = data.bill_type
             c_dic['PD']=data.party_details
             c_dic['PT']=data.party_tin
             c_dic['IN']=data.invoice_no

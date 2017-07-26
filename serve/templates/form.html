@@ -22,6 +22,21 @@
     <form method="POST" class="col s12">
       {% csrf_token %}
     <div class="row">
+      <div class="input-field col s3">
+        <select  name="firm">
+          <option value="" disabled selected>Choose Firm</option>
+          <option value="Munjal">Munjal</option>
+          <option value="Mehta">Mehta</option>
+        </select>
+      </div>
+      <div class="input-field col s3">
+        <select  name="bill_type">
+          <option value="" disabled selected>Choose Bill Type</option>
+          <option value="Invoice Bill">Invoice Bill</option>
+          <option value="Estimate">Estimate</option>
+        </select>
+      </div>
+
         <div class="input-field col s3" >
           <label for="PD">Party Details</label>
           <input type="text" size="60" name="PD" id="PD" placeholder="Party Details">

@@ -5,13 +5,24 @@
       <table border="1" style="border-collapse:collapse;" >
           <th colspan="6" width="90%">
             <center>
+              {% if info.firm== "Munjal" %}
               <p align="left"><b><font size="2">TIN :06181404998</font></b></p>
-              <font size="2"><u><b>Bill Invoice</b></u></font><br>
-              <font size="5">Munjal Irrigation System</font><br>
+              {% else %}
+              <p align="left"><b><font size="2">TIN :06181404998</font></b></p>
+              {% endif %}
+              <font size="2"><u><b>{% info.bill_type %}</b></u></font><br>
+              <font size="5">{% firm %} Irrigation System</font><br>
+              {% if info.firm == "Munjal"}
               Bhima Basti ,Near Water Tanki, Fatehabad -125050 (Haryana)<br>
               Auth.Dealer:Jain Irrigation Systems Ltd, Jalgoan (MS)<br>
+              {% else %}
+              Auth Distributor : Netafirm Irrigation India Pvt. Ltd.<br>
+              Shop No. 14, New Subzi Mandi, Fatehabad-125050 (Hry.)<br>
+              {% endif %}
+              {% if info.firm == "Munjal" %}
               <i><b>Tel : 09812320841 email : munjal_sumesh@rediffmail.com
               </i></b>
+              {% endif %}
             </center>
           </th>
           <tr>

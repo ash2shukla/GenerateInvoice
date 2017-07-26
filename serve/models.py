@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.db import models
 
 class database(models.Model):
+    firm = models.CharField(max_length=500,null=True)
+    bill_type = modles.CharField(max_length=500,null=True)
     invoice_no = models.CharField(max_length=500,null=True)
     dated =  models.CharField(max_length=500,null=True)
     party_details = models.CharField(max_length=500,null=True)
