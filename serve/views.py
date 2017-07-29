@@ -39,7 +39,7 @@ def main(request):
             c_dic={}
             c_dic['firm'] = request.POST.get('firm')
             c_dic['bill_type'] = request.POST.get('bill_type')
-            is_munjal = c_dic['firm']=="Munjal"
+            is_Firm1 = c_dic['firm']=="Firm 1"
             c_dic['PD']=request.POST.get('PD')
             c_dic['PT']=request.POST.get('PT')
             c_dic['IN']=request.POST.get('IN')
@@ -84,7 +84,7 @@ def main(request):
             except:
                 return HttpResponse("Data could not be saved to database")
             source = render_to_string("bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
-            ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words,'is_munjal':is_munjal})
+            ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words,'is_Firm1':is_Firm1})
             pdf = generate_pdf(html=source)
             response = HttpResponse(pdf.read(),content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('out.pdf')
@@ -111,7 +111,7 @@ def regenerate(request):
                 return HttpResponse("Unable to access database!")
             c_dic={}
             c_dic['firm'] = data.firm
-            is_munjal = c['firm'] =="Munjal"
+            is_Firm1 = c['firm'] =="Firm 1"
             c_dic['bill_type'] = data.bill_type
             c_dic['PD']=data.party_details
             c_dic['PT']=data.party_tin
@@ -136,7 +136,7 @@ def regenerate(request):
             #convert number to words
             words =  ntw().convertNumberToWords(gtotal)[3:]+' Only'
             source = render_to_string("bill.html",{'info':c_dic,'val':val,'brs':br_extra,'last':br_extra[len(br_extra)-1],'total':total
-            ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words,'is_munjal':is_munjal})
+            ,'gst':gst_val,'csgst':float(total*float(gst_val))/100,'gtotal':gtotal,'inwords':words,'is_Firm1':is_Firm1})
             pdf =generate_pdf(html=source)
             response = HttpResponse(pdf.read(),content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('out.pdf')

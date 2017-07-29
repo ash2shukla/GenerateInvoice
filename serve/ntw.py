@@ -1,5 +1,4 @@
 class Number2Words(object):
-
         def __init__(self):
             '''Initialise the class with useful data'''
 
